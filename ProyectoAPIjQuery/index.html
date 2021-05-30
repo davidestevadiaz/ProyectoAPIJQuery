@@ -4,24 +4,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Proyecto API</title>
     <script src="index.js"></script>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-   <header id="header">
-        <input id="buscador" placeholder="Escriba aqui su busqueda" onkeyup="peticionBuscador()">
-        <button id="business" onclick="peticionBusiness()">Business</button>
-        <button id="entertainment" onclick="peticionEntertainment()">Entertainment</button>
-        <button id="general" onclick="peticionGeneral()">General</button>
-        <button id="health" onclick="peticionHealth()">Health</button>
-        <button id="pagsig" onclick="cambiarPagina()">Página Siguiente</button>
 
-   </header>
-    <div id="maestro"></div>
+     <header id="cabecera">
+      <input id="buscador" placeholder="Escriba aqui su busqueda" onkeyup="peticionBuscador()">
+      <button id="science" onclick="peticionScience()">Science</button>
+      <button id="health" onclick="peticionHealth()">Health</button>
+      <button id="sports" onclick="peticionSports()">Sports</button>
+      <button id="technology" onclick="peticionTechnology()">Technology</button>
+      <button id="cambioPagina" onclick="pasoPagina()">Siguiente Página</button>
+     </header>
 
+  <div id="global"></div>
    <div id="modalDetalle" class="w3-modal">
     <div class="w3-modal-content">
       <div class="w3-container">
@@ -30,7 +29,7 @@
         <p class="contenido"></p>
         <p class="descripcion"></p>
         <p class="publicado"></p>
-        <a href="" class="url" target="_blank">Ver noticia</a>
+        <a class="url" target="_blank">Ver la noticia</a>
       </div>
     </div>
   </div>

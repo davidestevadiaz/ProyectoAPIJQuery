@@ -1,27 +1,19 @@
 :root {
     font-size: 62.5%; 
- /* Main Color */
- --primary-color: #00832C;
 
- 
- /* Secondary Color */
- --secondary-color: #585858c7;
- 
- /* Secondary Color Modified */
- --secondary-color-m: #ff94088e;
- 
- /* tertiary color */
- --tertiary-color: #017374;
- 
- /* tertiary color modified */
- --tertiary-color-m: #01727498;
+ --primary-color: #39006e;
+
+ --secondary-color: #b25fff8f;
+
+ --terciary-color: white;
+
  }
 
 header{
     background-color: var(--primary-color);
     display: flex;
     padding: 2rem;
-    justify-content: center;
+    align-content: flex-end;
     
 }
 
@@ -29,33 +21,33 @@ header input, button{
     margin: 0.2rem;
 }
 
-#maestro{
+#global{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
-    background-color: var(--tertiary-color);
+    justify-content: center;
+    background-color: var(--terciary-color);
+
 }
 
  /* CARTA */
-.w3-container-noticia{
+.w3-container-padre{
     display: flex;
     flex-direction: column;
-    align-items: center;
-    width: 35rem;
-    height: 45rem;
+    justify-content: space-around;
+    width: 45rem;
+    height: 55rem;
     background-color: var(--secondary-color);
     margin: 2rem;
-    box-shadow: 10px 5px 5px black;
+    padding: 2rem;
 }
 
-.w3-container-noticia img{
+.w3-container-padre img{
     margin-top: 2rem;
-    width: 300px;
-    height: 400px;
+    width: 400px;
+    height: 500px;
 }
 
-.w3-container-noticia button{
-    border-radius: 4px;
+.w3-container-padre button{
     margin-top: 2rem;
     margin-bottom: 2rem;
 
@@ -66,15 +58,20 @@ header input, button{
     height: 100vh;
 }
 
-#pagsig{
-    margin-left: 100px;
-    border-radius: 12px;
+.w3-container{
+    display:flex;
+    flex-direction: column;
+    padding: 2rem;
+    background-color: var(--primary-color);
+    color: white;
 }
 
-.w3-container{
-    background-color: var(--tertiary-color-m);
+#cambioPagina{
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 2rem;
+    margin-top: 1rem;
+}
+
+#img{
+    width: 100vw;
+    height: 100vh;
 }

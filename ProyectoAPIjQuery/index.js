@@ -5,7 +5,7 @@ function peticionBusiness() {
   if(referenciaFuncion!=peticionBusiness){
     numPagina=1;
   }
-  $("#maestro").text("");
+  $("#global").text("");
   loadDoc("https://newsapi.org/v2/top-headlines?page="+numPagina+"&pageSize=15&country=us&category=business&apiKey=5e976ef6430f49e08d17ea33c7605f41");
   referenciaFuncion=peticionBusiness;
 }
@@ -14,7 +14,7 @@ function peticionEntertainment() {
   if(referenciaFuncion!=peticionEntertainment){
     numPagina=1;
   }
-  $("#maestro").text("");
+  $("#global").text("");
   loadDoc("https://newsapi.org/v2/top-headlines?page="+numPagina+"&pageSize=15&country=us&category=entertainment&apiKey=5e976ef6430f49e08d17ea33c7605f41");
   referenciaFuncion=peticionEntertainment;
 }
@@ -23,7 +23,7 @@ function peticionGeneral() {
   if(referenciaFuncion!=peticionGeneral){
     numPagina=1;
   }
-  $("#maestro").text("");
+  $("#global").text("");
   loadDoc("https://newsapi.org/v2/top-headlines?page="+numPagina+"&pageSize=15&country=us&category=general&apiKey=5e976ef6430f49e08d17ea33c7605f41");
   referenciaFuncion=peticionGeneral;
 }
@@ -32,7 +32,7 @@ function peticionHealth() {
   if(referenciaFuncion!=peticionHealth){
     numPagina=1;
   }
-  $("#maestro").text("");
+  $("#global").text("");
   loadDoc("https://newsapi.org/v2/top-headlines?page="+numPagina+"&pageSize=15&country=us&category=health&apiKey=5e976ef6430f49e08d17ea33c7605f41");
   referenciaFuncion=peticionHealth;
 }
@@ -42,7 +42,7 @@ function peticionBuscador()
   if(referenciaFuncion!=peticionBuscador){
     numPagina=1;
   }
-  $("#maestro").text("");
+  $("#global").text("");
   evento= window.event;
   leidoDelInput= evento.target.value;
 if(leidoDelInput!=""){
@@ -80,13 +80,31 @@ function loadDoc(url){
 
 
 
+
+ window.onload = () =>{
+
+   loadDoc("https://newsapi.org/v2/everything?q=game&pageSize=15&apiKey=5e976ef6430f49e08d17ea33c7605f41");
+   
+ }
+
+ var numeroPagina=1;
+ var referenciaFuncion;
+ 
+ window.onload = () =>{
+   loadDoc("https://newsapi.org/v2/everything?q=covid&pageSize=12&apiKey=1c34e728a9ed40dbabbc3b34991bc560");
+   
+ }
+ 
+ 
+
+ function crearCard(){
   divpadre=$("<div class='w3-container-noticia' id='w3-container'></div>");
 
   img=$("<img class='imgpadre'></img>");
   boton=$("<button class='botonpadre'></button>");
   titulo=$("<h3 class='mih3'></h3>");
 
-  divpadre.appendTo($("#maestro"));
+  divpadre.appendTo($("#global"));
   titulo.appendTo($("#w3-container"));
   img.appendTo($("#w3-container"));
   boton.appendTo($("#w3-container"));
@@ -96,32 +114,9 @@ function loadDoc(url){
   $(".botonpadre").click(mostrarDetalle(noticia));
   $(".botonpadre").text("Mas informacion");
   $(".mih3").text(noticia.title);
+ }
 
-/*function crearCard(noticia){
-
-  divpadre=document.createElement("div");
-  divpadre.setAttribute("class", "w3-container-noticia");
-  divpadre.setAttribute("id", "w3-container");
-
-  img=document.createElement("img");
-  if(noticia.urlToImage==null)
-    img.setAttribute("src", "img/imagennodisponible.png");
-  else 
-    img.setAttribute("src", noticia.urlToImage); 
-  boton=document.createElement("button");
-  boton.addEventListener("click",()=>mostrarDetalle(noticia),false )
-  boton.innerHTML="Más información";
-  titulo=document.createElement("h3");
-  titulo.innerHTML= noticia.title; 
-
-  divpadre.appendChild(titulo);
-  divpadre.appendChild(img);
-  divpadre.appendChild(boton);
-  maestro= document.getElementById("maestro");
-  maestro.appendChild(divpadre);
-}*/
-
-function mostrarDetalle(articulo)
+   function mostrarDetalle(articulo)
  {
     modal = $("#modalDetalle");
     autor= $(".Autor");
@@ -129,7 +124,7 @@ function mostrarDetalle(articulo)
     contenido=$(".contenido");
     publicado=$(".publicado");
     enlace=$(".url");
-    !articulo.author? autor.text("No hay autor"): autor.text(articulo.author);
+    !articulo.author? autor.text("Anónimo"): autor.text(articulo.author);
     !articulo.content? autor.text("No hay contenido"):autor.text(articulo.content);   
     !articulo.description? descripcion.text("No hay descripcion"):descripcion.text(articulo.description);
     contenido.text(articulo.contenido);
@@ -138,35 +133,59 @@ function mostrarDetalle(articulo)
     modal.style.display = "block";
 
  }
- /*function mostrarDetalle(articulo)
- {
-    modal = document.getElementById("modalDetalle");
-    if(articulo.author==null)
-      modal.children[0].children[0].children[1].innerHTML= "No hay autor";
-    else 
-      modal.children[0].children[0].children[1].innerHTML= articulo.author;
-    
-      if(articulo.content==null)
-        modal.children[0].children[0].children[2].innerHTML= "No hay contenido";
-      else 
-        modal.children[0].children[0].children[2].innerHTML= articulo.content;
-    
-      if(articulo.description==null)
-        modal.children[0].children[0].children[2].innerHTML= "No hay descripcion";
-      else 
-        modal.children[0].children[0].children[2].innerHTML= articulo.description;
-      modal.children[0].children[0].children[3].innerHTML= articulo.description;
-      modal.children[0].children[0].children[4].innerHTML= articulo.publishedAt;
-      modal.children[0].children[0].children[5].href= articulo.url;
-  
-    //modal.innerHTML = articulo.author;
-    modal.style.display = "block";
-
- }*/
-
- window.onload = () =>{
-
-   loadDoc("https://newsapi.org/v2/everything?q=game&pageSize=15&apiKey=5e976ef6430f49e08d17ea33c7605f41");
    
+ 
+  function peticionScience() {
+    if(referenciaFuncion!=peticionScience){
+      numeroPagina=1;
+    }
+   document.getElementById("global").innerHTML="";
+   loadDoc("https://newsapi.org/v2/top-headlines?page="+numeroPagina+"&country=us&pageSize=12&category=science&apiKey=1c34e728a9ed40dbabbc3b34991bc560");
+   referenciaFuncion=peticionScience;
  }
-
+ 
+ function peticionHealth() {
+   if(referenciaFuncion!=peticionHealth){
+     numeroPagina=1;
+   }
+   document.getElementById("global").innerHTML="";
+   loadDoc("https://newsapi.org/v2/top-headlines?page="+numeroPagina+"&country=us&pageSize=12&category=health&apiKey=1c34e728a9ed40dbabbc3b34991bc560");
+   referenciaFuncion=peticionHealth;
+ }
+ 
+ function peticionSports() {
+   if(referenciaFuncion!=peticionSports){
+     numeroPagina=1;
+   }
+   document.getElementById("global").innerHTML="";
+   loadDoc("https://newsapi.org/v2/top-headlines?page="+numeroPagina+"&country=us&pageSize=12&category=sports&apiKey=1c34e728a9ed40dbabbc3b34991bc560");
+   referenciaFuncion=peticionSports;
+ }
+ 
+ function peticionTechnology() {
+   if(referenciaFuncion!=peticionTechnology){
+     numeroPagina=1;
+   }
+   document.getElementById("global").innerHTML="";
+   loadDoc("https://newsapi.org/v2/top-headlines?page="+numeroPagina+"&country=us&pageSize=12&category=technology&apiKey=1c34e728a9ed40dbabbc3b34991bc560");
+   referenciaFuncion=peticionTechnology;
+ }
+ 
+ function peticionBuscador() {
+   document.getElementById("global").innerHTML="";
+   evento= window.event;
+   leidoDelInput= evento.target.value;
+   if(leidoDelInput!="")
+   loadDoc("https://newsapi.org/v2/everything?q="+leidoDelInput+"&pageSize=12&apiKey=1c34e728a9ed40dbabbc3b34991bc560")
+   else{
+       img= document.createElement("img");
+       img.setAttribute("src", "img/notFound.jfif");
+       img.setAttribute("id", "img");
+   document.getElementById("global").appendChild(img);
+   }
+ }
+ 
+ function pasoPagina(){
+   numeroPagina++;
+   referenciaFuncion();
+ }
